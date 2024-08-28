@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telegram WebApp Client</title>
+</head>
+<body>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script>
+        // Initialize the WebApp
+        Telegram.WebApp.ready();
+
+        // Accessing initDataUnsafe - NOT for trusting or using sensitive logic
+        const initDataUnsafe = Telegram.WebApp.initDataUnsafe;
+
+        // Automatically send the data to the server and redirect to the dashboard
+        if (initDataUnsafe && initDataUnsafe.user) {
+            const user = initDataUnsafe.user;
+
+            // Send the data to the server
+            fetch('/send-telegram-data', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    user: user,
+                    initData: Telegram.WebApp.initData
+                })
+            }).then(response => {
+                if (response.ok) {
+                    return response.json(); // Expect a JSON response with the redirect URL
+                } else {
+                    throw new Error('Failed to send data.');
+                }
+            }).then(data => {
+                window.location.href = data.redirectUrl; // Redirect to the dashboard
+            }).catch(error => {
+                console.error('Error:', error);
+            });
+        } else {
+            document.body.innerHTML = 'No user data available.';
+        }
+    </script>
+</body>
+</html>

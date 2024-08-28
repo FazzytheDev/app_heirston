@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My App</title>
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+
+    <main>
+        <!-- Sections for different content -->
+        <section id="home" class="active">
+            <div class="app">
+                <div class="one user-details" id="userdetails">
+                    <h2 class="username"><%= username %> </h2>
+                    <h2 class="balance">
+                        <img src="images/logo.png" alt="logo">
+                        <span>  balance </span>
+                    </h2>
+                </div>
+                <div class="two hammer">
+                    <div class="hammer-start">
+                        <img src="images/Start.gif" alt="hammer hitting vault">
+                    </div>
+                </div>
+                <div class="three claimform">
+                    <div class="time-left">
+                        <h2>CLAIM IN</h2>    
+                        <div class="hours">05h</div>
+                        <div class="minutes">03m</div>
+                        <div class="seconds">05s</div>
+                    </div>
+                    <form action="/claim" method="post">
+                        <button type="submit" disabled>Claim 1000</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section id="friends">
+            <div class="one title" id="title">
+                <img src="assets/friends.svg" alt="logo">
+            </div>
+            <div class="two info">
+                <div class="invite">
+                    <span>Invite your friends and get 2000 $HON on every referral.</span>
+                </div>
+                <div class="action-buttons">
+                    <button class="copy">
+                        <img src="assets/copy.svg" width="20px" alt="">
+                        Copy</button>
+                    <button class="share">
+                        <img src="assets/share.svg" width="20px" alt="">
+                        Share</button>
+                </div>
+            </div>
+            <div class="three referral-info">
+                <div class="referred">
+                    <h2 class="friends">Friends: 0</h2>  
+                    <h2 class="earned">Earned: 0</h2>
+                </div>
+            </div>
+        </section>
+
+        <section id="earn">
+            <div class="task-title">
+                <h2>Heirston tasks</h2>
+                <p>Complete tasks to earn more point and join heirston community to get updates.</p>
+            </div>
+            <div class="tasks-actions">        
+                <div class="task">
+                    <form action="/completeTask" name="telegramOne" method="post">
+                        <div class="task-image">
+                            <img src="/images/instagram.svg" width="35px" alt="">
+                        </div>
+                        <div class="task-details">
+                            <h2 class="task-name">Join Heirston Telegram</h2>
+                            <p class="task-reward">+2000 $HON</p>
+                        </div>
+                        <div class="task-claim">
+                            <button type="submit" style="color: antiquewhite;">
+                                <a href="t.me/heirston" target="_blank">Claim</a>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="task">
+                    <form action="/completeTask" name="telegramOne" method="post">
+                        <div class="task-image">
+                            <img src="/images/tiktok.svg" width="35px" alt="">
+                        </div>
+                        <div class="task-details">
+                            <h2 class="task-name">Join Heirston Telegram</h2>
+                            <p class="task-reward">+2000 $HON</p>
+                        </div>
+                        <div class="task-claim">
+                            <button type="submit" style="color: antiquewhite;">
+                                <a href="t.me/heirston" target="_blank">Claim</a>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+           </div> 
+        </section>
+        <section id="boost">
+            <div class="task-title">
+                <img src="assets/rocket.png" width="50px" alt="">
+                <h2>Boosters</h2>
+                <p>Reduce crack time by activating boosters.</p>
+            </div>
+           <div class="tasks-actions">    
+                <div class="task">
+                <form action="/activateBooster" name="tenMinutesBooster" method="post">
+                        <div class="task-image">
+                            <img src="/assets/time.svg" width="35px" alt="">
+                        </div>
+                        <div class="task-details">
+                            <h2 class="task-name">Crack in 10 Minutes</h2>
+                            <p class="task-reward">-1,000,000 $HON</p>
+                        </div>
+                        <div class="task-claim">
+                            <button type="submit" style="color: antiquewhite;">
+                                <a href="t.me/heirston" target="_blank">Activate</a>
+                            </button>
+                        </div>
+                        </form>
+                </div>    
+            </div>
+        </section>
+        
+    </main>
+    <div class="four">
+        <nav>
+            <button onclick="showSection('friends')" class="nav-link">
+                <img src="assets/friends.svg" width="20px" alt="">
+                Frends
+            </button>
+           
+            <button onclick="showSection('home')"class="nav-link">
+                        <img src="assets/smash.svg" width="20px" alt="">
+                        Smash
+            </button>
+                
+            <button onclick="showSection('earn')" class="nav-link">
+                            <img src="assets/earn.svg" width="20px" alt="">
+                            Earn
+            </button>     
+            <button onclick="showSection('boost')"class="nav-link">
+                        <img src="assets/boost.svg" width="20px" alt="">
+                        Boost
+            </button>
+            
+        </nav>
+    </div>
+    
+
+ 
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('section').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Show the selected section
+            document.getElementById(sectionId).classList.add('active');
+        }
+    </script>
+</body>
+</html>

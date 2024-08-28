@@ -1,0 +1,453 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #000;
+}
+section {
+    display: none; /* Initially hide all sections */
+}
+section.active {
+    display: block; /* Show active section */
+}
+#home .app{
+    background-color: #000;
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    min-height: 110vh;
+    width: 100%;
+}
+
+#home .one{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    margin: 2rem auto 1.0rem;
+    flex-direction: column;
+    height: 20%;
+}
+
+#home .one h2{
+    color: white;
+    font-family: helvetica;
+}
+
+#home .one .username{
+    margin:  1.0rem 0 1.5rem 1rem;
+}
+#home .one .balance{
+    display: flex;
+    font-size: 48px;
+    justify-content: start;
+    align-items: center;
+}
+
+#home .one .balance img{
+    width: 30px;    
+}
+#home .two{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 50%;
+    height: 40%;
+    margin: 0 auto;
+}
+#home .two .level{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid gold;
+    padding: 3px;
+    border-radius: 10px;
+    margin: 0 0 0 1rem;
+}
+#home .two span{
+    color: white;
+    font-family: helvetica;
+    font-weight: bold;
+    margin: 0 0.4rem;
+}
+#home .two .level img{
+    width: 30px;
+}
+.two .hammer-start img{
+    width: 250px;
+}
+.three{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: fixed;
+    bottom: 20%;
+    left: 50%;
+    width: 80%;
+    transform: translate(-50%);
+    margin: -1rem auto 0.5rem;
+   
+}
+.three .time-left{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    margin: -1rem 0 0.5rem ;
+}
+.three form{
+    width: 100%;
+}
+
+
+.three form button{
+    background-color:#e8b41f;
+    border: none;
+    border-radius: 10px;
+    color: black;
+    cursor: pointer;
+    font-family: helvetica;
+    font-size: 1.3rem;
+    font-weight: bold;
+    padding: 12px 16px;
+    width: 100%;
+}
+
+
+/* friends  */
+
+#friends .app{
+   
+    min-height: 100vh;
+    width: 100%;
+}
+#friends .one{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    margin: 1.5rem auto 1.0rem;
+    flex-direction: column;
+    padding: 10px 0 10px;
+}
+
+
+
+#friends .one .balance{
+    display: flex;
+    font-size: 48px;
+    justify-content: start;
+    align-items: center;
+}
+
+#friends .one  img{
+    width: 100px;    
+}
+#friends .two{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#friends .two .invite span{
+    color: white;
+    font-family: helvetica;
+    font-weight: bold;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    text-align: center;
+}
+#friends .two .level img{
+    width: 30px;
+}
+#friends .two .action-buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:1.5rem 0;
+}
+#friends .two .action-buttons .copy{
+    border: 2px solid #0099eb;
+    border-radius: 5px;
+    background-color: #000;
+    color: #0099eb;
+    cursor: pointer;
+    display: flex;
+    font-size: 0.975rem;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 17px;  
+    margin: 0 1rem;  
+    
+}
+#friends .two .action-buttons .share{
+    border: 2px solid #00daff;
+    border-radius: 5px;
+    background-color: #000;
+    color: #00daff;
+    cursor: pointer;
+    display: flex;
+    font-size: 0.975rem;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 17px;    
+}
+#friends .two .action-buttons img{
+    margin: 0 0.3rem;
+}
+
+
+#friends .three{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ color: white;
+ margin: 2rem auto; 
+
+}
+#friends .referred{
+    display: flex;
+}
+
+#friends .referred h2{
+    background: #e8b41f;
+    border: none;
+    border-radius: 5px;
+    max-width: 200px;
+    padding: 14px;
+    color: white;
+    font-size: 0.950rem;
+    font-family: helvetica;
+    margin: 0 0.3rem 0;
+    text-align: center;
+}
+
+/* earn */
+#earn .app{
+ 
+    min-height: 100vh;
+    width: 100%;
+}
+#earn .task-title{
+    padding: 30px 20px 10px;
+}
+#earn .task-title h2{
+    color: white;
+    font-family: helvetica;
+    line-height: 1.6;
+    margin: 1rem 0;
+    font-size: 1.5rem;
+    font-weight: bolder;
+}
+#earn .task-title p{
+    color: silver;
+    font-family: helvetica;
+    line-height: 1.6;
+    font-size: 0.920rem;
+}
+
+#earn .tasks-actions{
+    width: 100%;
+    margin: 1rem 0;
+    padding-top: 20px;
+    padding-bottom: 70px;
+  
+}
+#earn .task form{
+    width: 90%;
+    margin: 1rem auto;
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    color: white;
+    padding: 0 10px 10px 0;
+    border-bottom: 1px solid rgba(192, 192, 192, 0.39);
+    }
+#earn .task-image{
+    flex-basis: 15%;
+}
+#earn .task-details{
+    flex-basis: 70%;
+     margin: 0 1%;
+}
+#earn .task-details h2{
+    font-family: helvetica;
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.6;
+}
+#earn .task-details p{
+    color: #e8b41f;
+    font-family: helvetica;
+    font-size: 0.9rem;
+}
+#earn .task-claim{
+    display: flex;
+    justify-content:end;
+    align-self: center;
+    flex-basis: 20%;
+    margin: 0 2%;
+}
+#earn .task-claim button{
+    border: none;
+    padding: 14px 16px;
+    background-image: linear-gradient(to right, #e8b41f, #ef9933);
+    border-radius: 20px;
+}
+#earn .task-claim button a{
+    background-color: none;
+    border: none;
+    color: white;
+    font-size: 0.875rem;
+    text-decoration: none;
+}
+
+
+
+/* boost */
+#boost .app{
+    min-height: 100vh;
+    width: 100%;
+}
+#boost .task-title{
+    text-align: center;
+    padding: 30px 20px 10px;
+}
+#boost .task-title h2{
+    color: white;
+    font-family: helvetica;
+    line-height: 1.6;
+    
+    font-size: 1.5rem;
+    font-weight: bolder;
+}
+#boost .task-title p{
+    color: silver;
+    font-family: helvetica;
+    line-height: 1.6;
+    font-size: 0.920rem;
+    margin: 1rem 0;
+}
+
+#boost .tasks-actions{
+    width: 100%;
+    margin: 1rem 0;
+}
+
+#boost .task form{
+    background-image: linear-gradient(to right, #e8b41f, #ef9933);
+    width: 90%;
+    margin: 1rem auto;
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    color: white;
+    padding: 13px;
+    border-radius: 8px;
+    }
+#boost .task-image{
+    flex-basis: 15%;
+}
+#boost .task-details{
+    flex-basis: 70%;
+     margin: 0 1%;
+}
+#boost .task-details h2{
+    font-family: helvetica;
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.6;
+}
+#boost .task-details p{
+    color: white;
+    font-weight: 600;
+    font-family: helvetica;
+    font-size: 0.9rem;
+}
+#boost .task-claim{
+    display: flex;
+    justify-content:end;
+    align-self: center;
+    flex-basis: 20%;
+    margin: 0 2%;
+    background-color: #ef9933;
+}
+#boost .task-claim button{
+    background: none;
+    border: none;
+}
+#boost .task-claim button a{
+    border: none;  background-image: linear-gradient(to right, #e8b41f, #ef9933);
+    border-radius: 20px;
+    padding: 10px 16px;
+    color: white;
+    font-size: 0.875rem;
+    text-decoration: none;
+}
+
+
+.four{
+    bottom: 0%;
+    left: 50%;
+    position: fixed;
+    width: 100%;
+    z-index: 2;
+    min-height: 5vh;
+    padding: 5px;
+    background: #111;
+    display: block;
+    transform: translate(-50%);
+
+}
+.four nav{
+    background: #111;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 4%;
+
+}
+.nav-link{
+    color: white;
+    background: none;
+    display: flex;
+    border: none;
+    padding: 10px;
+    font-family: helvetica;
+    font-size: 0.875rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+
+.active{
+    color: #e8b41f;
+}
+.nav-link img{
+    background-color:#111;
+    
+}
+.hours, .minutes, .seconds{
+    border: 1px solid #999;
+    padding: 5px;
+    margin: 1rem 0;
+    font-size: 1.0rem;
+    font-family: helvetica;
+}
+.three h2{
+    color: #999;
+    font-size: 0.905rem;
+    font-family: helvetica;
+    margin: 0 0.3rem 0;
+}
