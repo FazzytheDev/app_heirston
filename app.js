@@ -12,7 +12,7 @@ app.set('view engine', 'ejs');
 
 const botToken = '7253597466:AAGew1C-CfFVyh72gyfEfNsXOMA3FoQV6AE';
 const bot = new TelegramBot(botToken);
-const webhookUrl = 'https://app-heirston.onrender.com' + botToken;
+const webhookUrl = `https://app-heirston.onrender.com${botToken}`;
 bot.setWebHook(webhookUrl);
 
 // Route to handle incoming updates

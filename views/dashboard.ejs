@@ -28,9 +28,9 @@
                 <div class="three claimform">
                     <div class="time-left">
                         <h2>CLAIM IN</h2>    
-                        <div class="hours">05h</div>
-                        <div class="minutes">03m</div>
-                        <div class="seconds">05s</div>
+                        <div class="hours" id="hours">05h</div>
+                        <div class="minutes" id="minutes">03m</div>
+                        <div class="seconds" id="seconds">05s</div>
                     </div>
                     <form action="/claim" method="post">
                         <button type="submit" disabled>Claim 1000</button>
@@ -38,7 +38,11 @@
                 </div>
             </div>
         </section>
-
+        <script>
+            const hours = document.getElementById('hours');
+            const minutes = document.getElementById('minutes');
+            const seconds = document.getElementById('seconds');
+        </script>
         <section id="friends">
             <div class="one title" id="title">
                 <img src="assets/friends.svg" alt="logo">
