@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
-const botToken = '7527478831:AAE6G4dKdghzRVQsWAJnR--syKZxJHmi5bU';
+const botToken = '7356574594:AAELAC2ihgXpwpdo2WQMC9RhP6ot2dMCXZw';
 const bot = new TelegramBot(botToken, {polling: true});
 bot.getUpdates({ offset: -1 });
 
