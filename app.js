@@ -11,7 +11,7 @@ app.set('view engine', 'ejs');
 
 const botToken = '7527478831:AAE6G4dKdghzRVQsWAJnR--syKZxJHmi5bU';
 const bot = new TelegramBot(botToken, {polling: true});
-
+bot.getUpdates({ offset: -1 });
 
 mongoose.connect('mongodb+srv://fawazogunleye:Aabimbola2022@cluster0.caz9xfe.mongodb.net/appheirstonhon?retryWrites=true&w=majority&appName=Cluster0');
 
