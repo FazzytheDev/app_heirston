@@ -112,7 +112,7 @@ app.get('/dashboard', async (req, res) => {
             res.render('dashboard', {
                 username: user.username,
                 balance: user.balance, 
-                referredUsers: user.referredUsers
+                referredUsers: user.referredUsers.length
             });
         } else {
             // If user not found, send a 404 error
