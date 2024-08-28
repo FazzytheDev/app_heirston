@@ -57,8 +57,9 @@ bot.onText(/\/start(?:\s+(.+))?/, async (msg, match) => {
                 // If there is a referral code, find the referrer and add this user to their referredUsers list
                 const referrer = await User.findOne({ telegramId: referralCode });
 
-                if (referrer) {
+                if (referrer) {    
                     referrer.referredUsers.push(chatId);
+                    referrer.balance = (referrer.balance || 0) + 1000;
                     await referrer.save();
                 }
             }
