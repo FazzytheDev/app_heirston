@@ -121,6 +121,7 @@ app.get('/dashboard', async (req, res) => {
             res.render('dashboard', {
                 username: user.username,
                 balance: user.balance, 
+                nextClaimTime: user.nextClaimTime.getTime(),
                 referredUsers: user.referredUsers.length
             });
         } else {

@@ -28,20 +28,72 @@
                 <div class="three claimform">
                     <div class="time-left">
                         <h2>CLAIM IN</h2>    
-                        <div class="hours" id="hours">05h</div>
-                        <div class="minutes" id="minutes">03m</div>
-                        <div class="seconds" id="seconds">05s</div>
+                        <div class="hours" id="hours"></div>
+                        <div class="minutes" id="minutes"></div>
+                        <div class="seconds" id="seconds"></div>
                     </div>
                     <form action="/claim" method="post">
-                        <button type="submit" disabled>Claim 1000</button>
+                        <button type="submit" id="claimButton" disabled>Claim 1000</button>
                     </form>
                 </div>
             </div>
         </section>
+        <script src="https://unpkg.com/@telegram-apps/sdk@1.0.0/dist/index.iife.js"></script>
         <script>
-            const hours = document.getElementById('hours');
-            const minutes = document.getElementById('minutes');
-            const seconds = document.getElementById('seconds');
+            document.addEventListener('DOMContentLoaded', () => {
+                (function() {
+                    var { postEvent } = window.telegramApps.sdk;
+                    postEvent('web_app_expand');
+                })
+                const claimButton = document.getElementById('claimButton');
+                function updateCountdown(){
+                    let hoursLeft = document.getElementById('hours');
+                    let minutesLeft = document.getElementById('minutes');
+                    let secondsLeft = document.getElementById('seconds');    
+                    const now = new Date().getTime();
+                    const nextClaimTime = parseInt('<%= nextClaimTime %>');
+                    const distance = nextClaimTime - now;
+                    if(distance < 0){
+                        claimButton.disabled = false;
+                        hours, minutes, seconds = '00' 
+                    }
+                    else{
+                    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                    hoursLeft.innerText = hours;
+                    minutesLeft.innerText = minutes;
+                    secondsLeft.innerText = seconds;
+                    claimButton.disabled = true;
+                }
+                }
+                setInterval(updateCountdown, 1000);
+        
+            })
+            
+            
+          
+                let hoursLeft = document.getElementById('hours');
+                let minutesLeft = document.getElementById('minutes');
+                let secondsLeft = document.getElementById('seconds');    
+                const now = new Date().getTime();
+                const nextClaimTime = parseInt('<%= nextClaimTime %>');
+                const distance = nextClaimTime - now;
+                if(distance < 0){
+                    claimButton.disabled = false;
+                    hours, minutes, seconds = '00' 
+                }
+                else{
+                    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                    hoursLeft.innerText = hours;
+                    minutesLeft.innerText = minutes;
+                    secondsLeft.innerText = seconds;
+                    claimButton.disabled = true;
+                }
+            }
+        
         </script>
         <section id="friends">
             <div class="one title" id="title">
