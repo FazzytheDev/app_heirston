@@ -148,11 +148,10 @@ app.post('/claim', async(req, res) => {
                 
                 // Render the EJS template with updated user information
                 res.render('dashboard', { 
-                    success: true, 
-                    message: 'Claim successful', 
+                    username: user.username,
                     balance: user.balance, 
                     nextClaimTime: user.nextClaimTime.getTime(),
-                    user
+                    referredUsers: user.referredUsers.length
                 });
             } else {
                 const remainingTime = user.nextClaimTime - now;
