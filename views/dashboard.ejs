@@ -41,35 +41,40 @@
         <script src="https://unpkg.com/@telegram-apps/sdk@1.0.0/dist/index.iife.js"></script>
         <script>
             document.addEventListener('DOMContentLoaded', () => {
-                (function() {
-                    var { postEvent } = window.telegramApps.sdk;
-                    postEvent('web_app_expand');
-                })
-                const claimButton = document.getElementById('claimButton');
-                function updateCountdown(){
-                    let hoursLeft = document.getElementById('hours');
-                    let minutesLeft = document.getElementById('minutes');
-                    let secondsLeft = document.getElementById('seconds');    
-                    const now = new Date().getTime();
-                    const nextClaimTime = parseInt('<%= nextClaimTime %>');
-                    const distance = nextClaimTime - now;
-                    if(distance < 0){
-                        claimButton.disabled = false;
-                        hours, minutes, seconds = '00' 
-                    }
-                    else{
-                    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-                    hoursLeft.innerText = hours;
-                    minutesLeft.innerText = minutes;
-                    secondsLeft.innerText = seconds;
-                    claimButton.disabled = true;
-                }
-                }
-                setInterval(updateCountdown, 1000);
-        
-            })
+    // Call the postEvent function directly
+    var { postEvent } = window.telegramApps.sdk;
+    postEvent('web_app_expand');
+
+    const claimButton = document.getElementById('claimButton');
+
+    function updateCountdown() {
+        let hoursLeft = document.getElementById('hours');
+        let minutesLeft = document.getElementById('minutes');
+        let secondsLeft = document.getElementById('seconds');
+        const now = new Date().getTime();
+        const nextClaimTime = parseInt('<%= nextClaimTime %>');
+        const distance = nextClaimTime - now;
+
+        if (distance < 0) {
+            // Set all elements to '00'
+            hoursLeft.innerText = '00';
+            minutesLeft.innerText = '00';
+            secondsLeft.innerText = '00';
+            claimButton.disabled = false;
+        } else {
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            hoursLeft.innerText = hours.toString().padStart(2, '0');
+            minutesLeft.innerText = minutes.toString().padStart(2, '0');
+            secondsLeft.innerText = seconds.toString().padStart(2, '0');
+            claimButton.disabled = true;
+        }
+    }
+
+    setInterval(updateCountdown, 1000);
+});
+
             
             
           
