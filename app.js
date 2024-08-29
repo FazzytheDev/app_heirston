@@ -133,6 +133,55 @@ app.get('/dashboard', async (req, res) => {
         res.status(500).send('Internal server error');
     }
 });
+app.post('/claim', async(req, res) => {
+    const { telegramId } = req.body;
+
+    try {
+        let user = await User.findOne({ telegramId });
+    
+        if (user) {
+            const now = new Date();
+            if (now >= user.nextClaimTime) {
+                user.balance += 1000;
+                user.nextClaimTime = new Date(now.getTime() + 24 * 60 * 60 * 1000); // 24 hours from now
+                await user.save();
+                
+                // Render the EJS template with updated user information
+                res.render('dashboard', { 
+                    success: true, 
+                    message: 'Claim successful', 
+                    balance: user.balance, 
+                    nextClaimTime: user.nextClaimTime.getTime(),
+                    user
+                });
+            } else {
+                const remainingTime = user.nextClaimTime - now;
+                
+                // Render the EJS template with error message
+                res.render('dashboard', { 
+                    success: false, 
+                    message: 'You can only claim once every 24 hours', 
+                    remainingTime,
+                    user
+                });
+            }
+        } else {
+            // Render the EJS template with error message
+            res.render('dashboard', { 
+                success: false, 
+                message: 'User not found' 
+            });
+        }
+    } catch (err) {
+        // Render the EJS template with error message
+        res.render('dashboard', { 
+            success: false, 
+            message: 'Database error' 
+        });
+    }    
+})
+
+
 app.listen(3000, () => {
     console.log(`server started by xoxo`);
 })
