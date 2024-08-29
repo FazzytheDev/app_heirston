@@ -148,20 +148,25 @@ app.post('/claim', async(req, res) => {
                 
                 // Render the EJS template with updated user information
                 res.render('dashboard', { 
+                    success: true, 
+                    message: 'Claim successful', 
                     username: user.username,
                     balance: user.balance, 
                     nextClaimTime: user.nextClaimTime.getTime(),
-                    referredUsers: user.referredUsers.length
+                    referredUsers: user.referredUsers.length 
                 });
             } else {
                 const remainingTime = user.nextClaimTime - now;
                 
-                // Render the EJS template with error message
+                // Render the EJS template with error message and user information
                 res.render('dashboard', { 
                     success: false, 
                     message: 'You can only claim once every 24 hours', 
                     remainingTime,
-                    user
+                    username: user.username,
+                    balance: user.balance, 
+                    nextClaimTime: user.nextClaimTime.getTime(),
+                    referredUsers: user.referredUsers.length 
                 });
             }
         } else {
@@ -177,7 +182,8 @@ app.post('/claim', async(req, res) => {
             success: false, 
             message: 'Database error' 
         });
-    }    
+    }
+      
 })
 
 
