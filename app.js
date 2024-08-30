@@ -6,6 +6,7 @@ const TelegramBot = require('node-telegram-bot-api');
 
 const app = express();
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
@@ -119,6 +120,7 @@ app.get('/dashboard', async (req, res) => {
         if (user) {
             // Render the dashboard with the user's details
             res.render('dashboard', {
+                telegramId: telegramId,
                 username: user.username,
                 balance: user.balance, 
                 nextClaimTime: user.nextClaimTime.getTime(),
@@ -134,10 +136,10 @@ app.get('/dashboard', async (req, res) => {
     }
 });
 app.post('/claim', async(req, res) => {
-    const { telegramId } = req.body;
+    const telegramId = req.body.telegramId;
 
     try {
-        let user = await User.findOne({ telegramId });
+        let user = await User.findOne({ telegramId: telegramId});
     
         if (user) {
             const now = new Date();
@@ -145,7 +147,13 @@ app.post('/claim', async(req, res) => {
                 user.balance += 1000;
                 user.nextClaimTime = new Date(now.getTime() + 24 * 60 * 60 * 1000); // 24 hours from now
                 await user.save();
-               res.redirect('/dashboard'); 
+               res.render('dashboard', {
+                telegramId: telegramId,
+                username: user.username,
+                balance: user.balance, 
+                nextClaimTime: user.nextClaimTime.getTime(),
+                referredUsers: user.referredUsers.length
+               })
                
             } else {
                 const remainingTime = user.nextClaimTime - now;
@@ -154,11 +162,11 @@ app.post('/claim', async(req, res) => {
                 res.render('dashboard', { 
                     success: false, 
                     message: 'You can only claim once every 24 hours', 
-                    remainingTime,
+                    telegramId: telegramId,
                     username: user.username,
                     balance: user.balance, 
                     nextClaimTime: user.nextClaimTime.getTime(),
-                    referredUsers: user.referredUsers.length 
+                    referredUsers: user.referredUsers.length
                 });
             }
         } else {
