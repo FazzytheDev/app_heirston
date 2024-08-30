@@ -179,7 +179,7 @@
 
    const claimButton = document.getElementById('claimButton');
    const claimForm = document.getElementById('claimForm'); 
-   claimButton.addEventListener('submit', (event) => {
+   claimForm.addEventListener('submit', (event) => {
                 event.preventDefault();
                 const show = document.getElementById('copied');
                 show.classList.remove('hidden');                
@@ -202,6 +202,7 @@
            minutesLeft.innerText = '00';
            secondsLeft.innerText = '00';
            claimButton.disabled = false;
+           
        } else {
            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
