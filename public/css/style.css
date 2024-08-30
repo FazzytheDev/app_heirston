@@ -248,7 +248,7 @@ section.active {
     color: black; /* Text color */
     padding: 10px;
     position: fixed; /* Fixed position for notifications */
-    top: 10px; /* Margin from the top */
+    top: 50px; /* Margin from the top */
     left: 50%; /* Center horizontally */
     transform: translateX(-50%); /* Center horizontally */
     width: 80%; /* Occupy 70% of the screen width */
