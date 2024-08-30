@@ -193,7 +193,13 @@
            minutesLeft.innerText = '00';
            secondsLeft.innerText = '00';
            claimButton.disabled = false;
-           
+           claimButton.addEventListener('click', () => {
+                const show = document.getElementById('copied');
+                show.classList.remove('hidden');                
+                setTimeout(() => {
+                    show.classList.add('hidden');
+                }, 2000);
+            })
        } else {
            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
