@@ -207,9 +207,9 @@
 
    setInterval(updateCountdown, 1000);
 });
-document.getElementById('button').addEventListener('click', () => {
+document.getElementById('copyButton').addEventListener('click', () => {
     // Copy text to clipboard
-    const telegramId = `6076617815`;
+    const telegramId = `<%= telegramId %>`
     const referralLink = `https://t.me/heirstestthree_bot?start=${telegramId}`;
     navigator.clipboard.writeText(referralLink).then(() => {
         // Show the pop-up
@@ -224,7 +224,7 @@ document.getElementById('button').addEventListener('click', () => {
         console.error('Failed to copy text: ', err);
     });
 });
-          
+        
          
        </script>
 </body>
