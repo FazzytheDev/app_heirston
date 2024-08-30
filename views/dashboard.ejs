@@ -48,12 +48,15 @@
                     <span>Invite your friends and get 2000 $HON on every referral.</span>
                 </div>
                 <div class="action-buttons">
-                    <button class="copy">
+
+                    <button class="copy" id="copyButton">
                         <img src="assets/copy.svg" width="20px" alt="">
                         Copy</button>
-                    <button class="share">
+                    <button class="share" id="shareButton">
                         <img src="assets/share.svg" width="20px" alt="">
                         Share</button>
+                    <div id="copied" class="hidden">This is a pop-up message!</div>
+
                 </div>
             </div>
             <div class="three referral-info">
@@ -204,7 +207,23 @@
 
    setInterval(updateCountdown, 1000);
 });
-
+document.getElementById('button').addEventListener('click', () => {
+    // Copy text to clipboard
+    const telegramId = `6076617815`;
+    const referralLink = `https://t.me/heirstestthree_bot?start=${telegramId}`;
+    navigator.clipboard.writeText(referralLink).then(() => {
+        // Show the pop-up
+        const show = document.getElementById('copied');
+        show.classList.remove('hidden');
+        
+        // Hide the pop-up after 2 seconds
+        setTimeout(() => {
+            show.classList.add('hidden');
+        }, 2000); // Duration to show the pop-up
+    }).catch(err => {
+        console.error('Failed to copy text: ', err);
+    });
+});
           
          
        </script>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .hidden {
+            display: none;
+        }
+
+        #copied {
+            background: linear-gradient(135deg, #FFD700, #FFAA00); /* Gold gradient */
+            color: black; /* Text color */
+            border: 1px solid #ccc;
+            padding: 20px;
+            position: fixed; /* Fixed position for notifications */
+            top: 10px; /* Margin from the top */
+            left: 50%; /* Center horizontally */
+            transform: translateX(-50%); /* Center horizontally */
+            width: 70%; /* Occupy 70% of the screen width */
+            text-align: center; /* Center text */
+            z-index: 1000; /* Ensure it is on top of other content */
+            border-radius: 5px; /* Rounded corners (optional) */
+        }
+    </style>
+</head>
+<body>
+
+<p>Click on the button to copy the text from the text field. Try to paste the text (e.g. ctrl+v) afterwards in a different window, to see the effect.</p>
+
+<button id="button">Copy</button>
+<div id="copied" class="hidden">This is a pop-up message!</div>
+
+<script>
+document.getElementById('button').addEventListener('click', () => {
+    // Copy text to clipboard
+    const telegramId = `6076617815`;
+    const referralLink = `https://t.me/heirstestthree_bot?start=${telegramId}`;
+    navigator.clipboard.writeText(referralLink).then(() => {
+        // Show the pop-up
+        const show = document.getElementById('copied');
+        show.classList.remove('hidden');
+        
+        // Hide the pop-up after 2 seconds
+        setTimeout(() => {
+            show.classList.add('hidden');
+        }, 2000); // Duration to show the pop-up
+    }).catch(err => {
+        console.error('Failed to copy text: ', err);
+    });
+});
+</script>
+
+</body>
+</html>
