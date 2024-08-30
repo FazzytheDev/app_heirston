@@ -177,7 +177,7 @@
    var { postEvent } = window.telegramApps.sdk;
    postEvent('web_app_expand');
 
-   const claimButton = document.getElementById('claimButton').disabled;
+   const claimButton = document.getElementById('claimButton');
 
    function updateCountdown() {
        let hoursLeft = document.getElementById('hours');
@@ -192,7 +192,8 @@
            hoursLeft.innerText = '00';
            minutesLeft.innerText = '00';
            secondsLeft.innerText = '00';
-           claimButton = false;
+           claimButton.disabled = false;
+           
        } else {
            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
@@ -200,22 +201,11 @@
            hoursLeft.innerText = hours.toString().padStart(2, '0') +`h`;
            minutesLeft.innerText = minutes.toString().padStart(2, '0')+`m`;
            secondsLeft.innerText = seconds.toString().padStart(2, '0')+`s`;
-           claimButton = true;
+           claimButton.disabled = true;
        }
    }
-   
+
    setInterval(updateCountdown, 1000);
-   
-   if(!claimButton){
-    claimButton.addEventListener('click', () =>{
-    const show = document.getElementById('copied');
-        show.classList.remove('hidden');
-        setTimeout(() => {
-            show.classList.add('hidden');
-        }, 2000);
-    });
-   }
-   
 
    document.getElementById('copyButton').addEventListener('click', () => {
     // Copy text to clipboard
