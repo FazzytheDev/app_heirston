@@ -11,7 +11,7 @@ app.set('view engine', 'ejs');
 
 
 const botToken = '7253597466:AAGew1C-CfFVyh72gyfEfNsXOMA3FoQV6AE';
-const bot = new TelegramBot(botToken);
+const bot = new TelegramBot(botToken, {webHook: true});
 const webhookUrl = `https://app-heirston.onrender.com${botToken}`;
 bot.setWebHook(webhookUrl);
 
@@ -145,16 +145,8 @@ app.post('/claim', async(req, res) => {
                 user.balance += 1000;
                 user.nextClaimTime = new Date(now.getTime() + 24 * 60 * 60 * 1000); // 24 hours from now
                 await user.save();
-                
-                // Render the EJS template with updated user information
-                res.render('dashboard', { 
-                    success: true, 
-                    message: 'Claim successful', 
-                    username: user.username,
-                    balance: user.balance, 
-                    nextClaimTime: user.nextClaimTime.getTime(),
-                    referredUsers: user.referredUsers.length 
-                });
+               res.redirect('/dashboard'); 
+               
             } else {
                 const remainingTime = user.nextClaimTime - now;
                 
