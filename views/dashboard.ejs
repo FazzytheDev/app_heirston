@@ -206,8 +206,8 @@
    }
 
    setInterval(updateCountdown, 1000);
-});
-document.getElementById('copyButton').addEventListener('click', () => {
+
+   document.getElementById('copyButton').addEventListener('click', () => {
     // Copy text to clipboard
     const telegramId = `<%= telegramId %>`
     const referralLink = `https://t.me/heirstestthree_bot?start=${telegramId}`;
@@ -225,29 +225,23 @@ document.getElementById('copyButton').addEventListener('click', () => {
     });
 });
 function handleShare() {
-            const url = `https://t.me/heirstestthree_bot?start=<%= telegramId %>}`; 
-            const text = 'Hey! Join Heirston and let us explore together!'; 
+    const telegramId = "<%= telegramId %>"; // Make sure this is properly replaced
+    const message = encodeURIComponent('Hey! Join Heirston and let us explore together!');
+    const url = `https://t.me/share/url?url=https://t.me/heirstestthree_bot?start=${telegramId}&text=${message}`;
+    
+    // Open the share link in a new tab
+    window.open(url, '_blank');
+}
 
-            // Check if Telegram API is available
-            if (window.Telegram) {
-                window.Telegram.Share({
-                    url: url,
-                    text: text
-                })
-                .then(() => {
-                    console.log('Content shared successfully');
-                })
-                .catch(err => {
-                    console.error('Failed to share content:', err);
-                });
-            } else {
-                console.error('Telegram API is not available');
-            }
-        }
+// Attach the event listener to the button
+document.getElementById('shareButton').addEventListener('click', handleShare);
 
-        // Attach the event listener to the button
-        document.getElementById('shareButton').addEventListener('click', handleShare);
          
+           })
+
+
+  
+
        </script>
 </body>
 </html>
