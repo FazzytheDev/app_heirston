@@ -55,7 +55,7 @@
                     <button class="share" id="shareButton">
                         <img src="assets/share.svg" width="20px" alt="">
                         Share</button>
-                    <div id="copied" class="hidden">This is a pop-up message!</div>
+                    <div id="copied" class="hidden">Referral link copied!</div>
 
                 </div>
             </div>
@@ -224,7 +224,29 @@ document.getElementById('copyButton').addEventListener('click', () => {
         console.error('Failed to copy text: ', err);
     });
 });
-        
+function handleShare() {
+            const url = `https://t.me/heirstestthree_bot?start=<%= telegramId %>}`; // Replace with the URL you want to share
+            const text = 'Hey! Join Heirston and let us explore together!'; // Optional, message text
+
+            // Check if Telegram API is available
+            if (window.Telegram) {
+                window.Telegram.Share({
+                    url: url,
+                    text: text
+                })
+                .then(() => {
+                    console.log('Content shared successfully');
+                })
+                .catch(err => {
+                    console.error('Failed to share content:', err);
+                });
+            } else {
+                console.error('Telegram API is not available');
+            }
+        }
+
+        // Attach the event listener to the button
+        document.getElementById('shareButton').addEventListener('click', handleShare);
          
        </script>
 </body>

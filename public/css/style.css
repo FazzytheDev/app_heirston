@@ -238,13 +238,12 @@ section.active {
 #copied {
     background: linear-gradient(135deg, #FFD700, #FFAA00); /* Gold gradient */
     color: black; /* Text color */
-    border: 1px solid #ccc;
-    padding: 20px;
+    padding: 10px;
     position: fixed; /* Fixed position for notifications */
     top: 10px; /* Margin from the top */
     left: 50%; /* Center horizontally */
     transform: translateX(-50%); /* Center horizontally */
-    width: 70%; /* Occupy 70% of the screen width */
+    width: 80%; /* Occupy 70% of the screen width */
     text-align: center; /* Center text */
     z-index: 1000; /* Ensure it is on top of other content */
     border-radius: 5px; /* Rounded corners (optional) */
