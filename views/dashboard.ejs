@@ -32,7 +32,7 @@
                         <div class="minutes" id="minutes"></div>
                         <div class="seconds" id="seconds"></div>
                     </div>
-                    <form action="/claim" method="post">
+                    <form action="/claim" method="post" id="claimForm">
                         <button type="submit" name="telegramId" id="claimButton" value="<%= telegramId %>" disabled>Claim 1000</button>
                     </form>
                 </div>
@@ -178,7 +178,7 @@
    postEvent('web_app_expand');
 
    const claimButton = document.getElementById('claimButton');
-
+   const claimForm = document.getElementById('claimForm'); 
    function updateCountdown() {
        let hoursLeft = document.getElementById('hours');
        let minutesLeft = document.getElementById('minutes');
@@ -193,11 +193,13 @@
            minutesLeft.innerText = '00';
            secondsLeft.innerText = '00';
            claimButton.disabled = false;
-           claimButton.addEventListener('click', () => {
+           claimButton.addEventListener('submit', (event) => {
+                event.preventDefault();
                 const show = document.getElementById('copied');
                 show.classList.remove('hidden');                
                 setTimeout(() => {
                     show.classList.add('hidden');
+                    claimForm.submit();
                 }, 2000);
             })
        } else {
