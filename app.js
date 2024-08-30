@@ -11,11 +11,10 @@ app.set('view engine', 'ejs');
 
 
 const botToken = '7253597466:AAGew1C-CfFVyh72gyfEfNsXOMA3FoQV6AE';
-// Webhook setup with correct route
+const bot = new TelegramBot(botToken, {webHook: true});
 const webhookUrl = `https://app-heirston.onrender.com/bot${botToken}`;
 bot.setWebHook(webhookUrl);
 
-// Make sure the route matches the webhook URL exactly
 app.post(`/bot${botToken}`, (req, res) => {
     bot.processUpdate(req.body);
     res.sendStatus(200);
