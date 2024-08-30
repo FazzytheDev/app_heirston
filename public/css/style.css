@@ -107,16 +107,24 @@ section.active {
 
 
 .three form button{
-    background-color:#e8b41f;
     border: none;
     border-radius: 10px;
-    color: black;
     cursor: pointer;
     font-family: helvetica;
     font-size: 1.3rem;
     font-weight: bold;
     padding: 12px 16px;
     width: 100%;
+}
+.three form .button {
+    background-color: #e8b41f;
+    color: black;
+}
+
+/* Disabled button */
+.three form .button:disabled {
+    background-color: #d0a320;
+    color: #a0a0a0;
 }
 
 
