@@ -11,7 +11,7 @@ app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
 
-const botToken = '7253597466:AAGew1C-CfFVyh72gyfEfNsXOMA3FoQV6AE';
+const botToken = '6790916464:AAF6CQ5s1aU86GgH_IsoyqhFTGC-HSsC5GU';
 const bot = new TelegramBot(botToken, {webHook: true});
 const webhookUrl = `https://app-heirston.onrender.com/bot${botToken}`;
 bot.setWebHook(webhookUrl);
@@ -184,7 +184,8 @@ app.post('/claim', async(req, res) => {
         });
     }
       
-})
+});
+
 
 
 app.listen(3000, () => {
